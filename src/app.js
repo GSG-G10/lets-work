@@ -12,10 +12,10 @@ app.use(express.static(path.join(__dirname, '..', 'public')));
 app.get('/search-jobs', (req, res) => {
   const searchJob = req.query.q;
 
-  const url = `https://api.adzuna.com/v1/api/jobs/gb/search/1?app_id=${APP_ID}&app_key=${APP_KEY}&results_per_page=20&what=${searchJob}&content-type=application/json`;
+  const url = `https://api.adzuna.com/v1/api/jobs/gb/search/1?app_id=${APP_ID}&app_key=${APP_KEY}&results_per_page=6&what=${searchJob}&content-type=application/json`;
   fetch(url)
     .then((response) => response.json())
-    .then((data) => data);
+    .then((data) => res.json(data));
 });
 
 app.set('port', process.env.PORT || 5000);
