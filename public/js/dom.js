@@ -23,7 +23,7 @@ function displayData() {
 
         const salary = document.createElement('span');
         salary.setAttribute('class', 'job-salary-range');
-        salary.textContent = element.salaryMin - element.salaryMin;
+        salary.textContent = `$${Math.round(element.salary_max)} - $${Math.round(element.salary_min)}`;
         jobCard.appendChild(salary);
 
         const jobDate = document.createElement('span');
