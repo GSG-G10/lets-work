@@ -9,7 +9,7 @@ function displayData() {
       const allData = data.results;
       allData.forEach((element) => {
         const jobCard = document.createElement('div');
-        jobCard.setAttribute('class', 'job-box');
+        jobCard.setAttribute('class', 'job-card');
 
         const jobTitle = document.createElement('h3');
         jobTitle.setAttribute('class', 'job-title');
