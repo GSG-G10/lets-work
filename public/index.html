@@ -8,7 +8,19 @@
   <title>Let's Work</title>
 </head>
 <body>
-  
+  <header>
+    <h1 class="page-heading">Find Work</h1>
+    <p class="page-brief">Browse the most recent jobs that match your skills and profile description to the skills clients are looking for.</p>
+  </header>
+  <section class="search-section">
+    <form method="GET" action="/search" class="search-form">
+      <label for="input-search">Search for Jobs</label>
+      <input type="text" id="input-search" class="input-search">
+      <button type="submit" class="submit-btn">Search</button>
+    </form>
+  </section>
+
+  <main class="output-container"></main>
   <script src="js/dom.js"></script>
 </body>
 </html>
