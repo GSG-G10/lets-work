@@ -6,7 +6,9 @@ const fetch = require('node-fetch');
 const { APP_ID, APP_KEY } = process.env;
 
 const app = express();
-
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', 'public', 'index.html'));
+});
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
 app.get('/search-jobs', (req, res) => {
@@ -16,6 +18,14 @@ app.get('/search-jobs', (req, res) => {
   fetch(url)
     .then((response) => response.json())
     .then((data) => res.json(data));
+});
+
+app.use((req, res) => {
+  res.status(404).sendFile(path.join(__dirname, '..', 'public', '404.html'));
+});
+// eslint-disable-next-line no-unused-vars
+app.use((error, req, res, next) => {
+  res.status(500).sendFile(path.join(__dirname, '..', 'public', '500.html'));
 });
 
 app.set('port', process.env.PORT || 5000);
