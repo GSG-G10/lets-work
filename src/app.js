@@ -2,15 +2,19 @@ require('env2')('.env');
 const express = require('express');
 const path = require('path');
 const fetch = require('node-fetch');
+const compression = require('compression');
 
 const { APP_ID, APP_KEY } = process.env;
 
 const app = express();
+
+app.use(compression());
+app.disable('x-powered-by');
+
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '..', 'public', 'index.html'));
 });
-app.use(express.static(path.join(__dirname, '..', 'public')));
-
+app.use(express.static(path.join(__dirname, '..', 'public'), { maxAge: '30d' }));
 app.get('/search-jobs', (req, res) => {
   const searchJob = req.query.q;
 
