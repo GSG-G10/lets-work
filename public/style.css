@@ -8,7 +8,7 @@ body {
   font-family: 'Open Sans', sans-serif;
   width: 60%;
   margin: 3em auto;
-  background-color: #F1F2F4;
+  background-color: #f1f2f4;
 }
 header {
   margin-bottom: 30px;
@@ -33,9 +33,9 @@ header {
   transition: all 0.2s;
   font-family: 'Open Sans', sans-serif;
 }
-.input-search:hover, 
+.input-search:hover,
 .input-search:focus {
-  border-color: #28779a
+  border-color: #28779a;
 }
 .submit-btn {
   border: 1px solid #28779a;
@@ -57,6 +57,7 @@ header {
   justify-content: space-evenly;
   flex-wrap: wrap;
   margin: 35px 0;
+  position: relative;
 }
 .job-card {
   display: flex;
@@ -92,7 +93,13 @@ header {
 .job-apply:hover {
   background-color: #7b3415;
 }
-
+.empty-alert {
+  position: absolute;
+  top: -28px;
+  color: red;
+  left: 6px;
+  font-size: 14px;
+}
 
 /* Media Queries */
 @media screen and (max-width: 800px) {
@@ -112,5 +119,36 @@ header {
   }
   .submit-btn {
     width: 25%;
+  }
+}
+/* Spinner loading */
+#spinner:not([hidden]) {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#spinner::after {
+  content: "";
+  width: 80px;
+  height: 80px;
+  border: 2px solid #f3f3f3;
+  border-top: 3px solid #28779a;
+  border-radius: 100%;
+  will-change: transform;
+  animation: spin 1s infinite linear
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }
