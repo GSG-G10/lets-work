@@ -3,12 +3,17 @@ const submitBtn = document.querySelector('.submit-btn');
 const outputContainer = document.querySelector('.output-container');
 const spinner = document.getElementById('spinner');
 
+function createElement(tagName, className, parentNode) {
+  const elementName = document.createElement(tagName);
+  elementName.classList.add(className);
+  parentNode.appendChild(elementName);
+  return elementName;
+}
+
 function displayData() {
   if (inputSearch.value === '') {
-    const emptyAlert = document.createElement('span');
-    emptyAlert.classList.add('empty-alert');
+    const emptyAlert = createElement('span', 'empty-alert', outputContainer);
     emptyAlert.textContent = 'You must enetr a job title';
-    outputContainer.appendChild(emptyAlert);
   } else {
     spinner.removeAttribute('hidden');
     fetch(`/search-jobs?q=${inputSearch.value.trim()}`)
@@ -17,50 +22,34 @@ function displayData() {
         spinner.setAttribute('hidden', '');
         const allData = data.results;
         if (allData.length === 0) {
-          const emptyAlert = document.createElement('span');
-          emptyAlert.classList.add('empty-alert');
+          const emptyAlert = createElement('span', 'empty-alert', outputContainer);
           emptyAlert.textContent = 'No Data to Show, try another job title';
-          outputContainer.appendChild(emptyAlert);
         } else {
           allData.forEach((element) => {
-            const jobCard = document.createElement('div');
-            jobCard.setAttribute('class', 'job-card');
+            const jobCard = createElement('div', 'job-card', outputContainer);
 
-            const jobTitle = document.createElement('h3');
-            jobTitle.setAttribute('class', 'job-title');
+            const jobTitle = createElement('h3', 'job-title', jobCard);
             jobTitle.textContent = element.title;
-            jobCard.appendChild(jobTitle);
 
-            const jobLocation = document.createElement('span');
-            jobLocation.setAttribute('class', 'job-location');
+            const jobLocation = createElement('span', 'job-location', jobCard);
             jobLocation.textContent = element.location.display_name;
-            jobCard.appendChild(jobLocation);
 
-            const salary = document.createElement('span');
-            salary.setAttribute('class', 'job-salary-range');
+            const salary = createElement('span', 'job-salary-range', jobCard);
             salary.textContent = `$${Math.round(element.salary_max)} - $${Math.round(element.salary_min)}`;
-            jobCard.appendChild(salary);
 
-            const jobDate = document.createElement('span');
-            jobDate.setAttribute('class', 'job-date-created');
+            const jobDate = createElement('span', 'job-date-created', jobCard);
             jobDate.textContent = element.created;
-            jobCard.appendChild(jobDate);
 
-            const applyTojob = document.createElement('a');
-            applyTojob.setAttribute('class', 'job-apply');
+            const applyTojob = createElement('a', 'job-apply', jobCard);
             applyTojob.target = '_blank';
             applyTojob.href = element.redirect_url;
             applyTojob.textContent = 'Apply Now';
-            jobCard.appendChild(applyTojob);
-
-            outputContainer.appendChild(jobCard);
           });
         }
+      // eslint-disable-next-line no-unused-vars
       }).catch((err) => {
-        const emptyAlert = document.createElement('span');
-        emptyAlert.classList.add('empty-alert');
+        const emptyAlert = createElement('span', 'empty-alert', outputContainer);
         emptyAlert.textContent = 'Server Error, Please Try again later.';
-        outputContainer.appendChild(emptyAlert);
       });
   }
 }
