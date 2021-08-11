@@ -13,7 +13,13 @@ The home page displays the input search bar to type the job title you are lookin
 ## User Stories :memo:
 
 * As a user, you can search for jobs suitable for your specialty.
+
+![Screenshot 2021-08-11 191025](https://user-images.githubusercontent.com/24351976/129075473-b65e8740-f3cf-4de3-922b-a1ae85118162.png)
+
 * As a user, you can see several jobs in the search results, which you can find what you like.
+
+![search-result](https://user-images.githubusercontent.com/24351976/129073952-655c6c6d-446f-4550-997e-4cecdedc0499.png)
+
 * As a user, you can apply for a job online.
 
 
@@ -25,7 +31,7 @@ The home page displays the input search bar to type the job title you are lookin
 - npm start
 ```
 
-## Tech Stack :page_with_curl: 
+## Tech Stack < />
 ```
 - HTML
 - CSS
