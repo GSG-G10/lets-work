@@ -20,7 +20,6 @@ test('Testing for /search-jobs endpoint and get status 200', (done) => {
     .expect('Content-Type', /json/)
     .end((err, res) => {
       if (err) done(err);
-      // console.log(res.ok);
       expect(res.statusCode).toBe(200);
       expect(res.ok).toEqual(true);
       done();

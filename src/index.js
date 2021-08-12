@@ -1,3 +1,4 @@
+require('env2')('.env');
 const app = require('./app');
 
 const Port = app.get('port');

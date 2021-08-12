@@ -1,8 +1,7 @@
-require('env2')('.env');
 const path = require('path');
 const express = require('express');
 const compression = require('compression');
-const router = require('./controllers/routes');
+const router = require('./controllers');
 
 const app = express();
 

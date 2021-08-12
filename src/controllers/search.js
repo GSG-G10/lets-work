@@ -1,4 +1,3 @@
-require('env2')('.env');
 const fetch = require('node-fetch');
 
 const { APP_ID, APP_KEY } = process.env;
